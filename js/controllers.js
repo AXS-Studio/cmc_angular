@@ -56,7 +56,9 @@
     ]); //end LoginCtrl
 
     //SurveyController
-    //TODO: Backend integration
+    //TODO: After submit show thank you screen (with logout button).
+    //-Backend integration for all.
+    //-Save results in localStorage for delivery if internet connection lost
     mhtControllers.controller('SurveyCtrl', ['$scope', '$http', '$location',
         function($scope, $http, $location) {        
             
@@ -69,6 +71,8 @@
                 "date": null,
                 "answers": []
             };
+
+            //var tags_arr = new Array(); //TODO (UNCOMMENT AND UPDATE VARIABLES WHEN AJAX IN PLACE): All previously submitted tags
 
             //Templates for survey.php using ng-include
             $scope.templates = [
@@ -89,7 +93,33 @@
                 $scope.template = $scope.templates[1];
                 $scope.hideSurveyHeader = false;
 
-                //TODO: AJAX DOWNLOAD SURVEY HERE
+                //TODO: AJAX DOWNLOAD SURVEY HERE (And populate results array with patientID, sessionID etc.)
+                 // $.ajax({
+                 //    type: 'POST',
+                 //    url: './php/query_questionnaire.php',
+                 //    data: results,
+                 //    dataType: 'json',
+                 //    success: function(json) {
+                 //        questionnaire = json;
+                 // }
+
+                //TODO: AJAX DOWNLOAD TAGS HERE (And update variables, import autocomplete plugins)
+                // $.ajax({
+                //     type: 'POST',
+                //     url: 'php/get_tags.php',
+                //     data: {
+                //         patientID: results.patientID
+                //     },
+                //     success: function(message) {
+                //         tags_arr = jQuery.parseJSON(message);
+
+                //         if (tags_arr != null)
+                //         $( "#tags" ).autocomplete({
+                //             source: tags_arr, 
+                //         });
+                //     },
+                //     error: function() {}
+                // });
 
                 //Randomize questions
                 if (questionnaire.randomize == 1)
@@ -153,9 +183,21 @@
                 else if (currentQuestionIndex == questionnaire.questions.length){
                     saveComment();
 
-                    //TODO: AJAX SUBMIT ANSWERS TO DATABASE
-                }
-            };
+                //TODO: AJAX SUBMIT ANSWERS TO DATABASE
+                // results.date = new Date();
+                // var rJson = JSON.stringify(results); // ALERT: Stringify function already happening here!!!
+                // localStorage.setItem('lsResults', rJson);
+                // $.ajax({
+                //         type: 'POST',
+                //         url: 'php/submit.php',
+                //         data: { "results": rJson },
+                //         success: function(message) {
+                //             localStorage.removeItem('lsResults');
+                //         }
+                //         error: function (jqXHR, textStatus, errorThrown) {
+                //             console.log(errorThrown);
+                //         }
+                // };
 
             //Add tag button clicked
             $scope.onAddTagClick = function() {
