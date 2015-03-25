@@ -1,3 +1,5 @@
+// questionnaire_sample.js: Sample formats of JSON objects received and submitted to server
+
 //SUMMARY OF SPECIFIC QUESTION TYPES
 
 // VAS

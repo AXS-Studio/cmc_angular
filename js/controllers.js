@@ -41,7 +41,7 @@
     var mhtControllers = angular.module('mhtControllers', []);
 
     //LoginController
-    //TODO: Backend integration for authetication, check for invalid fields
+    //TODO: Backend integration for authetication, check for invalid fields, reset password workflow
     mhtControllers.controller('LoginCtrl', ['$scope', '$http', '$location',
         function($scope, $routeParams, $location) {
 
@@ -51,6 +51,20 @@
 
             $scope.signIn = function() {               
                 $location.path('survey');
+
+                // results.patientID = json.patientID;
+                // results.patientEmail = json.patientEmail;
+
+                // TODO: Submit results in localStorage for delivery if internet connection lost in prev session
+                // if (localStorage.getItem('lsResults')) {
+                //     $.ajax({
+                //         type: 'POST',
+                //         url: 'php/submit.php',
+                //         data: {
+                //             "results": localStorage.getItem('lsResults')
+                //         }
+                // });
+
             };
         }
     ]); //end LoginCtrl
@@ -112,7 +126,6 @@
                 //     },
                 //     success: function(message) {
                 //         tags_arr = jQuery.parseJSON(message);
-
                 //         if (tags_arr != null)
                 //         $( "#tags" ).autocomplete({
                 //             source: tags_arr, 
@@ -139,7 +152,6 @@
 
             //Back button clicked
             $scope.onBackClick = function() {
-    
                 //Back clicked on normal survey questions
                 if (currentQuestionIndex > 0 && currentQuestionIndex < questionnaire.questions.length) {
                     saveAnswer();
@@ -345,6 +357,7 @@
         }
     ]); //end SurveyCtrl
 
+    //Just a temporary questionnaire object to use locally before AJAX to backend setup
     var questionnaire = {
         "result":1,
         "patientID": "email@address.com",
