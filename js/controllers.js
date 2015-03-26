@@ -91,8 +91,9 @@
             //Templates for survey.php using ng-include
             $scope.templates = [
                 { name: 'survey_start.php', url: 'survey_start.php'},
-                { name: 'survey_start.php', url: 'survey_question.php'},
-                { name: 'survey_comments.php', url: 'survey_comments.php'} ];
+                { name: 'survey_question.php', url: 'survey_question.php'},
+                { name: 'survey_comments.php', url: 'survey_comments.php'},
+                { name: 'survey_end.php', url: 'survey_end.php'} ];
 
             //Initialize survey (show button to let user start survey)
             var initialize = function() {
@@ -133,7 +134,7 @@
                 //     },
                 //     error: function() {}
                 // });
-
+                
                 //Randomize questions
                 if (questionnaire.randomize == 1)
                 questionnaire.questions = fisherYates(questionnaire.questions);
@@ -194,24 +195,33 @@
                 //Submit button on Comment clicked
                 else if (currentQuestionIndex == questionnaire.questions.length){
                     saveComment();
+                   
 
-                //TODO: AJAX SUBMIT ANSWERS TO DATABASE
-                // results.date = new Date();
-                // var rJson = JSON.stringify(results); // ALERT: Stringify function already happening here!!!
-                // localStorage.setItem('lsResults', rJson);
-                // $.ajax({
-                //         type: 'POST',
-                //         url: 'php/submit.php',
-                //         data: { "results": rJson },
-                //         success: function(message) {
-                //             localStorage.removeItem('lsResults');
-                //         }
-                //         error: function (jqXHR, textStatus, errorThrown) {
-                //             console.log(errorThrown);
-                //         }
-                // };
+                    //Populate results with user details
+                    results.patientID = questionnaire.patientID;
+                    results.sessionID = questionnaire.sessionID;
+                    results.date = new Date();
 
-            //Add tag button clicked
+                    //TODO: AJAX SUBMIT ANSWERS TO DATABASE
+                    // var rJson = JSON.stringify(results); // ALERT: Stringify function already happening here!!!
+                    // localStorage.setItem('lsResults', rJson);
+                    // $.ajax({
+                    //         type: 'POST',
+                    //         url: 'php/submit.php',
+                    //         data: { "results": rJson },
+                    //         success: function(message) {
+                    //             localStorage.removeItem('lsResults');
+                    //         }
+                    //         error: function (jqXHR, textStatus, errorThrown) {
+                    //             console.log(errorThrown);
+                    //         }
+                    // };
+
+                    $scope.template = $scope.templates[3]; //Use survey_end template
+                }
+            }
+
+            //Add tag button clicked in comments
             $scope.onAddTagClick = function() {
                 var thisTag = $scope.thisQuestion.inputTag;
                 $scope.thisQuestion.inputTag = null; //reset input field
@@ -237,12 +247,17 @@
                 $scope.thisQuestion.tagArray.push(thisTag);
             };
 
-            //Remove tag button clicked
+            //Remove tag button clicked in comments
             $scope.onRemoveTagClick = function(inTag) {
                 var index = $scope.thisQuestion.tagArray.indexOf(inTag);
                 
                 if (index > -1) 
                 $scope.thisQuestion.tagArray.splice(index, 1);
+            };
+
+            //Logout button clicked in survey_end
+            $scope.onLogoutClick = function(inTag) {
+                $location.path('login');
             };
 
             //Display correct question text and highlight selected option if previously answered
@@ -366,52 +381,52 @@
         "flip": 1,
         "infreq":1,
         "questions": [
-        {
-            "questionID": "VAS_0",
-            "stem": "your current mood:",
-            "anchors": [
-                "Worst ever",
-                "Best ever"
-            ],
-            "flipped": 0
-        }, {
-            "questionID": "VAS_1",
-            "stem": "your current level of anger or irritability",
-            "anchors": [
-                "Not at all irritable",
-                "Extremely irritable"
-            ],
-            "flipped": 0
-        }, {
-            "questionID": "QIDS_0",
-            "days": 14,
-            "stem": "Have you been feeling sad?",
-            "anchors": [
-                "I didn't feel sad.",
-                "I felt sad less than half the time.",
-                "I felt sad more than half the time.",
-                "I felt sad nearly all of the time."
-            ]
-        }, {
-            "questionID": "ASRM_0",
-            "days": 2,
-            "stem": "",
-            "anchors": [
-                "I do not feel happier or more cheerful than usual.",
-                "I occasionally feel happier or more cheerful than usual.",
-                "I often feel happier or more cheerful than usual.",
-                "I feel happier or more cheerful than usual most of the time.",
-                "I feel happier or more cheerful than usual all of the time."
-            ]
-        }, {
-            "questionID": "OTHER_0",
-            "stem": "Have you been admitted to a hospital",
-            "days": 14,
-            "anchors": [
-                "No",
-                "Yes"
-            ]
-        },
+        // {
+        //     "questionID": "VAS_0",
+        //     "stem": "your current mood:",
+        //     "anchors": [
+        //         "Worst ever",
+        //         "Best ever"
+        //     ],
+        //     "flipped": 0
+        // }, {
+        //     "questionID": "VAS_1",
+        //     "stem": "your current level of anger or irritability",
+        //     "anchors": [
+        //         "Not at all irritable",
+        //         "Extremely irritable"
+        //     ],
+        //     "flipped": 0
+        // }, {
+        //     "questionID": "QIDS_0",
+        //     "days": 14,
+        //     "stem": "Have you been feeling sad?",
+        //     "anchors": [
+        //         "I didn't feel sad.",
+        //         "I felt sad less than half the time.",
+        //         "I felt sad more than half the time.",
+        //         "I felt sad nearly all of the time."
+        //     ]
+        // }, {
+        //     "questionID": "ASRM_0",
+        //     "days": 2,
+        //     "stem": "",
+        //     "anchors": [
+        //         "I do not feel happier or more cheerful than usual.",
+        //         "I occasionally feel happier or more cheerful than usual.",
+        //         "I often feel happier or more cheerful than usual.",
+        //         "I feel happier or more cheerful than usual most of the time.",
+        //         "I feel happier or more cheerful than usual all of the time."
+        //     ]
+        // }, {
+        //     "questionID": "OTHER_0",
+        //     "stem": "Have you been admitted to a hospital",
+        //     "days": 14,
+        //     "anchors": [
+        //         "No",
+        //         "Yes"
+        //     ]
+        // },
         {
             "questionID": "OTHER_1",
             "stem": "Have you visited the Emergency Room",
