@@ -38,6 +38,10 @@
   margin-top: 100px;
 }
 
+.loginError{
+  color: red;
+}
+
 /*----Button Styles-----------------------------------------*/
 .btn {
   padding: 10px 24px;

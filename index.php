@@ -20,6 +20,8 @@
 
   <!-- Custom MHT scripts -->
   <script src="js/controllers.js"></script>
+  <script src="js/controller_login.js"></script>
+  <script src="js/controller_survey.js"></script>
   <script src="js/slider.js"></script>
 
   <!-- <base href="angular_bootstrap"/> for pretty URLs, not working on localhost-->
