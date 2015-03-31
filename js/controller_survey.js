@@ -7,7 +7,7 @@
 //-Backend integration for tags, add autocompletion via plugin
 //-Alert if user leaves in the middle of survey
 //-Prevent double clicks and double submits
-
+//-Consider changing jQuery AJAX call to Angular's built-in AJAX
 mhtControllers.controller('SurveyCtrl', ['$scope', '$http', '$location',
     function($scope, $http, $location) {
 

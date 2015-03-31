@@ -1,0 +1,83 @@
+/*#tagFocus_bg{
+	fill: url(#gray-gradient);
+}*/
+/* #graph-header .headerDiv {
+    display: inline-block;
+    margin: 0px 10px 0px 0px;
+    width: 15px;
+    height: 15px;
+    border-radius: 7px;
+}*/
+
+div#cfgGraphs {
+    padding: 0px;
+    margin: 0px;
+}
+
+/*------------------Comments------------------*/
+#commentDiv {
+    border: 0;
+    margin: 0;
+}
+#commentDiv #commentDateDiv {
+    margin: 15px 20px 15px 20px;
+    color: grey;
+}
+#commentDiv #commentDataDiv {
+    margin: 5px 20px 20px 20px;
+}
+#commentDiv #commentTagDiv {
+    margin: 5px 20px 20px 20px;
+}
+#commentDiv #commentTagUL {
+    margin-top:5px;
+    padding: 0px;
+    list-style-type: none;
+}
+#commentDiv #commentTagUL li {
+    margin: 15px 20px 15px 0px;
+    display: inline;
+}
+#commentDiv #commentTagUL li .tagDiv {
+    display: inline-block;
+    margin: 0px 10px 0px 0px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid gray;
+}
+/*------------------Graph styling------------------C*/
+svg .areaFill {
+    fill: none;
+    fill-opacity: 0.25;
+    stroke-width: 0;
+    stroke-opacity: 0;
+    stroke: none;
+}
+svg .meanline {
+    stroke-width: 1.5;
+    fill: none;
+    opacity: 1;
+}
+svg .y.axis path {
+    stroke: none;
+}
+svg .x.axis path {
+    stroke: none;
+}
+svg .y.axis line {
+    stroke-opacity: .25;
+}
+svg .axis path, svg .axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+svg .axis text {
+    font: 10px sans-serif;
+}
+rect.pane {
+    cursor: move;
+    fill: none;
+    pointer-events: all;
+}

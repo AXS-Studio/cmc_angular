@@ -46,3 +46,8 @@
 </div>
 
 </div>
+
+<script src="js/rangeslider.js"></script>
+<script src="js/spectrum.js"></script>
+<script src="js/timeline.js"></script>
+<script src="js/menu-ui.js"></script>

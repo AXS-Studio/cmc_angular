@@ -8,20 +8,28 @@
   
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/graph-ui.css">
+  <link rel="stylesheet" href="css/timeline.css">
+  <link rel="stylesheet" href="css/spectrum.css">
 
   <!-- jQuery scripts -->
   <script src="js/jquery-1.9.1.js"></script>
   <script src="js/jquery-ui-1.10.3.custom.js"></script>
-  <script src="js/jquery.ui.touch-punch.min.js"></script>
+  <script src="js/jquery.ui.touch-punch.min.js"></script> 
 
- <!-- Libraries -->
+  <!-- Libraries -->
   <script src="node_modules/angular/angular.js"></script>
   <script src="node_modules/angular-route/angular-route.js"></script>
+  <script src="node_modules/d3/d3.js"></script>
 
   <!-- Custom MHT scripts -->
   <script src="js/controllers.js"></script>
   <script src="js/controller_login.js"></script>
   <script src="js/controller_survey.js"></script>
+
+  
+
+  <script src="js/controller_timeline.js"></script>
   <script src="js/slider.js"></script>
 
   <!-- <base href="angular_bootstrap"/> for pretty URLs, not working on localhost-->
@@ -41,4 +49,6 @@
 	</div>
 </footer>
 </body>
+
+
 </html>
