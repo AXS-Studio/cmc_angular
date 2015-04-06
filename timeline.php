@@ -1,4 +1,17 @@
+
 <div class="container">
+
+<!-- Custom directive for wrapping d3.js -->
+<!-- Referring to resources here: https://www.dashingd3js.com/d3-resources/d3-and-angular -->
+
+<timeline chart-data="myData" id="cfgGraphs"></timeline>
+
+</div>
+
+<!-- The below works apart from broken CSS (assuming controller_timeline.js is empty),
+	 but currently in process of adapting the process to the Angular workflow -->
+
+<!-- <div class="container">
 
 <div id="content_graph">
 	<article class="o0" id="art-timeline" style="display: none;">
@@ -50,4 +63,4 @@
 <script src="js/rangeslider.js"></script>
 <script src="js/spectrum.js"></script>
 <script src="js/timeline.js"></script>
-<script src="js/menu-ui.js"></script>
+<script src="js/menu-ui.js"></script> -->

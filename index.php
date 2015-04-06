@@ -27,8 +27,6 @@
   <script src="js/controller_login.js"></script>
   <script src="js/controller_survey.js"></script>
 
-  
-
   <script src="js/controller_timeline.js"></script>
   <script src="js/slider.js"></script>
 
